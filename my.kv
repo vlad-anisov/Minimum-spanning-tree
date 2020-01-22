@@ -1,0 +1,103 @@
+#:import OneLineAvatarIconListItem kivymd.uix.list.OneLineAvatarIconListItem
+
+
+<ListItemWithCheckbox@OneLineAvatarIconListItem>:
+    number: '0'
+    MyCheckbox:
+        active: True
+        on_active: app.root.edit_item(root.text, self.active)
+    MyText:
+        text: root.number  
+
+# <Lists@BoxLayout>:
+#     name: 'lists'
+#     orientation: 'vertical'
+#     size_hint: None , 0.5
+#     size: 280, 100
+#     pos_hint: {'center_x':0.875, 'top':0.8}
+#     cost: 'Стоимость пути: 0 км' 
+    # canvas:
+    #     Color:
+    #         rgba: (.27, .27, .27, 1) # DarkOliveGreen
+    #     Rectangle:
+    #         size: self.size
+    #         pos: self.pos
+
+    # MDToolbar:
+    #     id: tool
+    #     title: root.cost
+    #     md_bg_color: app.theme_cls.primary_color
+    #     elevation: 10
+
+    # ScrollView:
+
+    #     MDList:
+    #         md_bg_color: app.theme_cls.opposite_bg_darkest
+    #         id: scroll
+    #         ListItemWithCheckbox:
+    #             text: "One"
+    #         ListItemWithCheckbox:
+    #             text: "Two"
+            
+
+<Container>:
+    mytext_input: text_input
+    bgi: bgi
+
+    Image:
+        id: bgi
+        size: self.size
+        pos: self.pos
+        source: 'myimg.png'
+
+    MDTextFieldRound:
+        id: text_input
+        font_size: 28
+        size_hint: 0.8, 0.1
+        pos_hint: {'center_x':0.5, 'top':0.95}
+        multiline: False
+        icon_type: 'right'
+        icon_right: 'magnify'
+        icon_color: [0, 0, 0, 1]
+        foreground_color: [1, 1, 1, 1]
+        normal_color: [0, 0, 0, 0.5]
+        active_color: [0, 0, 0, 0.5]
+        on_text_validate:
+            root.enter()
+
+    Lists:
+        id:lis
+        name: 'lists'
+        orientation: 'vertical'
+        size_hint: None , 0.5
+        size: 280, 100
+        pos_hint: {'center_x':0.875, 'top':0.8}
+        cost: 'Протяжённость: 0 км' 
+        canvas:
+            Color:
+                rgba: (.27, .27, .27, 1) # DarkOliveGreen
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        MDToolbar:
+            id: tool
+            title: lis.cost
+            md_bg_color: app.theme_cls.primary_color
+            elevation: 10
+
+        ScrollView:
+            MDList:
+                md_bg_color: app.theme_cls.opposite_bg_darkest
+                id: scroll
+
+        MDRaisedButton:
+            text: "Пересчитать"
+            font_size: 20
+            elevation_normal: 5
+            opposite_colors: True
+            md_bg_color: 1, 0.34, 0.13, 1
+            size: 0, 0
+            size_hint: 1, 0.25
+            on_release: app.root.new_map()
+        
