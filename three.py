@@ -34,7 +34,7 @@ def get_map(cities, original_cities):
     matrix = get_matrix(cities)
     X = csr_matrix(matrix)
     Tcsr = minimum_spanning_tree(X)
-    distance = int(sum(Tcsr.data)/100)
+    distance = int((sum(Tcsr.data)*1.609)/100)
     start, finish = Tcsr.nonzero()
     index_of_cities = zip(start, finish)
 
@@ -54,7 +54,3 @@ def get_map(cities, original_cities):
     urlretrieve(url, 'myimg.png')
     
     return distance
-
-if __name__ == "__main__":
-    s = ["Брест","Пинск","Минск"]
-    get_map(s,s)
