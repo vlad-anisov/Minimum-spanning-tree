@@ -4,7 +4,7 @@ import requests
 from urllib.request import urlretrieve
 import geocoder
 
-MAPBOX_KEY = "pk.eyJ1IjoiYW5pc292IiwiYSI6ImNrMm90Mm1sZTEzZGwzbmxubHlpanVwbnUifQ.pqzxDULrQBz-arhWo8BaKA"
+MAPBOX_KEY = "YOUR_MAPBOX_KEY"
 
 def city_to_coordinates(name):
     g = geocoder.mapbox(f'{name}', country='BY', key=MAPBOX_KEY).json
